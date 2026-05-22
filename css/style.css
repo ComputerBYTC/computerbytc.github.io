@@ -3,7 +3,7 @@
 :root{
   --primary:#fca0e9;
   --primary-soft:#fff0fa;
-  --text:#222;
+  --text:#000000;
 }
 header{
   position: fixed;

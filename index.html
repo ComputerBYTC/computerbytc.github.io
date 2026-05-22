@@ -743,6 +743,287 @@ background: #fff;
   color:white;
 }
 
+/* ===== Responsive Fix Mobile ===== */
+
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* รูปภาพไม่ล้น */
+img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* วิดีโอไม่ล้น */
+video{
+    max-width: 100%;
+    height: auto;
+}
+
+/* container กลางเว็บ */
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* ปุ่มกดง่ายขึ้น */
+button{
+    cursor: pointer;
+}
+
+/* ===== MOBILE REAL FIX ===== */
+
+@media (max-width:768px){
+
+  /* HEADER */
+  header{
+    height:auto;
+    padding:15px;
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .nav-right{
+    width:100%;
+    justify-content:center;
+  }
+
+  nav ul{
+    gap:15px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  /* HERO */
+  .hero{
+    height:auto;
+    min-height:700px;
+    top:0;
+    padding:120px 20px 50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+  }
+
+  .floating-logo{
+    position:relative;
+    width:95%;
+    max-width:400px;
+    left:0;
+    top:0;
+    margin-bottom:30px;
+  }
+
+  .hero-content{
+    position:relative;
+    left:0;
+    bottom:0;
+    text-align:center;
+    width:100%;
+  }
+
+  .hero h2{
+    font-size:28px;
+  }
+
+  .hero p{
+    font-size:15px;
+    line-height:1.6;
+  }
+
+  .btn{
+    width:100%;
+    max-width:320px;
+  }
+
+  /* MENU ICONS */
+  .menu-icons{
+    gap:25px;
+    padding:40px 20px;
+  }
+
+  .menu-icon{
+    width:70px;
+    height:70px;
+  }
+
+  /* PROMO */
+  .promo-row,
+  .promo-row.reverse{
+    flex-direction:column;
+  }
+
+  .promo-row .promo-text,
+  .promo-row.reverse .promo-text{
+    text-align:left;
+  }
+
+  .promo-row .promo-text h2{
+    font-size:28px;
+  }
+
+  .promo-row .promo-text p{
+    font-size:15px;
+    line-height:1.8;
+  }
+
+  /* POSTER */
+  .poster-row{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  /* POPUP */
+  .popup-box{
+    width:95%;
+  }
+
+  /* NOTICE */
+  .top-notice{
+    width:95%;
+    right:10px;
+  }
+
+  /* TEXT */
+  .text-section h1{
+    font-size:28px;
+  }
+
+  .text-section p{
+    font-size:15px;
+  }
+
+  /* SLIDER */
+  .slider2{
+    aspect-ratio:auto;
+  }
+
+}
+
+/* ===== Responsive Fix Mobile ===== */
+
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* รูปภาพไม่ล้น */
+img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* วิดีโอไม่ล้น */
+video{
+    max-width: 100%;
+    height: auto;
+}
+
+/* container กลางเว็บ */
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px;
+}
+
+/* ปุ่มกดง่ายขึ้น */
+button{
+    cursor: pointer;
+}
+
+/* ===== มือถือ ===== */
+
+@media (max-width: 768px){
+
+    /* ลดข้อความใหญ่ */
+    h1{
+        font-size: 32px !important;
+        line-height: 1.2;
+    }
+
+    h2{
+        font-size: 26px !important;
+    }
+
+    h3{
+        font-size: 22px !important;
+    }
+
+    p{
+        font-size: 16px !important;
+    }
+
+    /* flex แนวนอน -> ลงแนวตั้ง */
+    .flex,
+    .row,
+    .container,
+    .content,
+    .box{
+        flex-direction: column !important;
+    }
+
+    /* กัน element ล้นจอ */
+    div,
+    section,
+    article{
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* ปุ่มเต็มจอ */
+    button,
+    .btn{
+        width: 100%;
+    }
+
+    /* spacing */
+    section{
+        padding: 30px 15px !important;
+    }
+
+    /* เมนู */
+    nav{
+        flex-direction: column !important;
+        gap: 10px;
+    }
+
+    /* ตัวหนังสือกลาง */
+    .text,
+    .title,
+    .hero{
+        text-align: center !important;
+    }
+
+    /* ยกเลิก position ที่ทำเว็บพัง */
+    .absolute,
+    .card,
+    .image,
+    .hero-image{
+        position: relative !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        bottom: 0 !important;
+    }
+
+}
 
 
 
@@ -855,6 +1136,7 @@ window.closePopup = function(){
             <a href="#">โครงงาน</a>
             <a href="activity.html">กิจกรรม</a>
             <a href="portfolio.html">รางวัล</a>
+            <a href="ESPORT.html">ESPORT</a>
           </div>
         </li>
 

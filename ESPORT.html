@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPUTER ESPORT CUP</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <style>
+        /* ===== LOAD FONTS ===== */
+        @font-face {
+            font-family: 'FCVision';
+            src: url('fonts/FCVision-Light.woff2') format('woff2');
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: 'FCVision';
+            src: url('fonts/FCVision-Bold.woff2') format('woff2');
+            font-weight: 700;
+        }
+
+        @font-face {
+            font-family: 'ImpactCustom';
+            src: url('fonts/impact.ttf') format('truetype');
+        }
+
+        /* รีเซ็ตค่าเริ่มต้นและตั้งค่าฟอนต์หลัก */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'FCVision', sans-serif;
+        }
+
+        body {
+            background-color: #0d0b18;
+            color: #ffffff;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 80% 20%, #1e1540 0%, #0d0b18 60%);
+        }
+
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #ffffff;
+            font-weight: 700; /* สลับเป็นตัวหนาเมื่อ Hover */
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
+        }
+
+        /* ส่วนหัวเว็บขนาดใหญ่ (Hero Section) */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            padding: 140px 8% 80px 8%; /* ปรับลด padding-top ลงมาเล็กน้อยให้สมดุลกับเมนูแบบไม่เลื่อน */
+            display: flex;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(13, 11, 24, 0) 0%, #0d0b18 100%),
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 11, 24, 0.55);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero-tag {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #3b82f6;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        /* ใช้ฟอนต์ ImpactCustom เพื่อความดุดันสไตล์ eSports */
+        .hero h1 {
+            font-family: 'ImpactCustom', 'FCVision', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: #ffffff;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            color: #b4b3cd;
+            font-size: 18px;
+            font-weight: 300;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .btn-explore {
+            background: linear-gradient(90deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-explore:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.6);
+        }
+
+        /* ส่วนแสดงผลการแข่งขันและผลงาน */
+        .main-container {
+            padding: 40px 8% 80px 8%;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 4px;
+            background: #8b5cf6;
+            border-radius: 2px;
+        }
+
+        .btn-view-all {
+            background: rgba(255, 255, 255, 0.06);
+            color: #b4b3cd;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 300;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .btn-view-all:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+        }
+
+        /* การ์ดผลงานสไตล์มินิมอลเกมมิ่ง (Cards Grid) */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #141125;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-img-container {
+            position: relative;
+            width: 100%;
+            padding-top: 130%;
+            overflow: hidden;
+        }
+
+        .card-img-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img-container img {
+            transform: scale(1.08);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 11, 24, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: 0.3s ease;
+        }
+
+        .card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            background: #2563eb;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 18px;
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.8);
+        }
+
+        .card-info {
+            padding: 12px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #ffffff;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 300;
+            color: #94a3b8;
+        }
+
+        /* ป้ายบอกสถานะการแข่งขัน */
+        .status-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .badge-win { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge-upcoming { background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .badge-live { background: rgba(239, 68, 68, 0.2); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); animation: pulse 1.5s infinite; }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        /* ส่วนท้ายเว็บ (Footer) */
+        footer {
+            background: #090712;
+            padding: 30px 8%;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 300;
+            color: #64748b;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* Responsive สำหรับมือถือ */
+        @media (max-width: 768px) {
+            header { padding: 15px 5%; }
+            nav { display: none; }
+            .hero { padding: 120px 5% 60px 5%; min-height: auto; }
+            .hero h1 { font-size: 42px; } /* ปรับขนาด Impact ลงเมื่ออยู่บนจอมือถือ */
+            .main-container { padding: 30px 5%; }
+            .cards-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+      <div id="header"></div>
+
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tag">Welcome to the Next Gen Esports</span>
+            <h1>การแข่งขัน<br>ESPORT CUP</h1>
+            <p>รวบรวมผลงาน ไฮไลท์แมตช์การแข่งขัน และทำเนียบแชมป์ของน้องๆ นักกีฬาอีสปอร์ตระดับเยาวชน มาร่วมเชียร์และส่งต่อแรงบันดาลใจให้ก้าวสู่ระดับมืออาชีพ</p>
+            <a href="#matches" class="btn-explore">
+                การแข่งขัน
+            </a>
+        </div>
+    </section>
+
+    <main class="main-container" id="matches">
+        <div class="section-header">
+            <h2 class="section-title">ผลงานการแข่งขันล่าสุด</h2>
+            <a href="#" class="btn-view-all">ดูทั้งหมด</a>
+        </div>
+
+        <div class="cards-grid">
+            
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1553481187-be93c21490a9?auto=format&fit=crop&w=400&q=80" alt="Match 1">
+                    <div class="card-overlay">
+                        <div class="play-icon"><i class="fa-solid fa-trophy"></i></div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <span class="status-badge badge-win">อันดับการแข่งขัน</span>
+                    <div class="card-title">FREE FIRE</div>
+                    <div class="card-meta">
+                        <span>คอมพิวเตอร์ อีสปอร์ต คัพ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80" alt="Match 2">
+                    <div class="card-overlay">
+                        <div class="play-icon"><i class="fa-solid fa-circle-play"></i></div>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <span class="status-badge badge-win">อันดับการแข่งขัน</span>
+                    <div class="card-title">ROV</div>
+                    <div class="card-meta">
+                        <span>คอมพิวเตอร์ อีสปอร์ต คัพ</span>
+                    </div>
+                </div>
+            </div>
+
+            
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 COMPUTER ESPORT CUP. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        
+/* ===== LOAD HEADER ===== */
+
+fetch("components/header.html")
+.then(res => res.text())
+.then(data => {
+
+  document.getElementById("header").innerHTML = data;
+
+  const header = document.querySelector("header");
+
+  window.addEventListener("scroll", () => {
+
+    if(!header) return;
+
+    if(window.scrollY > 10){
+      header.classList.add("active");
+    }else{
+      header.classList.remove("active");
+    }
+
+  });
+
+})
+.catch(error => console.error(error));
+    </script>
+
+</body>
+</html>
