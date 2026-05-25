@@ -54,28 +54,29 @@
             font-weight: 700; /* สลับเป็นตัวหนาเมื่อ Hover */
             text-shadow: 0 0 10px rgba(139, 92, 246, 0.6);
         }
+/* ส่วนหัวเว็บขนาดใหญ่ (Hero Section) แก้ไขเป็น 16:9 และดึงภาพลงมาให้เห็นหัวตัวละคร */
+.hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 20 / 9; /* ปรับกลับเป็น 16:9 ตามมาตรฐานแบนเนอร์เกม */
+    min-height: 400px; /* เพิ่มความสูงขั้นต่ำเล็กน้อยเพื่อให้คลุมตัวหนังสือบนจอเล็ก */
+    padding: 120px 8% 70px 8%; /* เปลี่ยน padding เป็นพิกเซลที่แน่นอน เพื่อไม่ให้ดันรูปหลุดเฟรม */
+    display: flex;
+    align-items: center;
+background: linear-gradient(180deg, rgba(13, 11, 24, 0) 0%, #0d0b18 140%),
+            url('https://drive.google.com/thumbnail?id=1CbvaDLfXzTbG9g2KUD5ffpXsWt0p-9U3&sz=w1920')
+            no-repeat center -50%/cover;
+}
 
-        /* ส่วนหัวเว็บขนาดใหญ่ (Hero Section) */
-        .hero {
-            position: relative;
-            min-height: 85vh;
-            padding: 140px 8% 80px 8%; /* ปรับลด padding-top ลงมาเล็กน้อยให้สมดุลกับเมนูแบบไม่เลื่อน */
-            display: flex;
-            align-items: center;
-            background: linear-gradient(180deg, rgba(13, 11, 24, 0) 0%, #0d0b18 100%),
-                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(13, 11, 24, 0.55);
-            z-index: 1;
-        }
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 200; /* แก้ไขจาก 20% เป็น 0 เพื่อให้แผ่นฟิล์มมืดบังเต็มพื้นที่แบนเนอร์ */
+    left: 200; /* แก้ไขจาก 20 เป็น 0 */
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
 
         .hero-content {
             position: relative;
@@ -348,7 +349,7 @@
             
             <a href="#" class="card" style="text-decoration: none;">
                 <div class="card-img-container">
-                    <img src="https://images.unsplash.com/photo-1553481187-be93c21490a9?auto=format&fit=crop&w=400&q=80" alt="Match 1">
+                    <img src="https://drive.google.com/thumbnail?id=1NY9-mE34WoGTNJfEOT4bJQ90ASSCaBm5&sz=w1000" alt="Match 1">
                     <div class="card-overlay">
                         <div class="play-icon"><i class="fa-solid fa-trophy"></i></div>
                     </div>
@@ -364,7 +365,7 @@
 
             <a href="#" class="card" style="text-decoration: none;">
                 <div class="card-img-container">
-                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80" alt="Match 2">
+                    <img src="https://drive.google.com/thumbnail?id=1dRoVLRnsuDf-8bqbbIIOFHAMD-PMuTms&sz=w1000" alt="Match 2">
                     <div class="card-overlay">
                         <div class="play-icon"><i class="fa-solid fa-trophy"></i></div>
                     </div>
